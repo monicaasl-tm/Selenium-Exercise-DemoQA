@@ -68,12 +68,23 @@ public class SeleniumDemo {
 		action.moveToElement(checkBoxSection).perform();
 		executor.executeScript("arguments[0].click();", checkBoxSection);
 		
-		WebElement checkBoxHome = driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/ol[1]/li[1]/span[1]/label[1]/span[1]"));
+		WebElement checkBoxHome = driver.findElement(By.xpath("//button[@aria-label='Toggle']"));
 		checkBoxHome.click();
+		
+		WebElement documentsCheck = driver.findElement(By.cssSelector("div.body-height:nth-child(2) div.container.playgound-body div.row div.col-12.mt-4.col-md-6:nth-child(2) div.check-box-tree-wrapper:nth-child(2) div.react-checkbox-tree.rct-icons-fa4 li.rct-node.rct-node-parent.rct-node-expanded ol:nth-child(2) li.rct-node.rct-node-parent.rct-node-collapsed:nth-child(2) span.rct-text > button.rct-collapse.rct-collapse-btn:nth-child(1)"));
+		documentsCheck.click();
+		
+		WebElement officeCheck = driver.findElement(By.cssSelector("div.body-height:nth-child(2) div.container.playgound-body div.row div.col-12.mt-4.col-md-6:nth-child(2) div.check-box-tree-wrapper:nth-child(2) div.react-checkbox-tree.rct-icons-fa4 li.rct-node.rct-node-parent.rct-node-expanded li.rct-node.rct-node-parent.rct-node-expanded:nth-child(2) ol:nth-child(2) li.rct-node.rct-node-parent.rct-node-collapsed:nth-child(2) span.rct-text > button.rct-collapse.rct-collapse-btn:nth-child(1)"));
+		officeCheck.click();
+		
+		WebElement selectPublic = driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/ol[1]/li[1]/ol[1]/li[2]/ol[1]/li[2]/ol[1]/li[1]/span[1]/label[1]/span[1]/*[1]"));
+		selectPublic.click();
+		
 		Thread.sleep(5000);
 		
-		WebElement messageResult = driver.findElement(By.xpath(" //span[contains(text(),'home')]"));
-		Assert.assertEquals(messageResult.getText(), "home");
+		WebElement messageResult = driver.findElement(By.xpath("//div[@id='result']"));
+		Assert.assertEquals(messageResult.getText(), "You have selected :\n"
+				+ "public");
 	}
 	
 	//Homework
